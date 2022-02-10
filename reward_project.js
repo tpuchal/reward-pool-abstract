@@ -34,7 +34,7 @@ class TokenHolder {
 
 //sends rewards to address
 function getRewards(TokenHolder) {
-  if(hasAtLeastOneDayPassed(TokenHolder)) {
+  if(hasLessThanOneDayPassed(TokenHolder)) {
     returnTokens(TokenHolder, getTokensLocked(TokenHolder));
     console.log("You weren't eligible for a single payout. Returning tokens");
   }
@@ -64,7 +64,7 @@ function getTokensLocked(TokenHolder) {
   return tokens_locked.get(TokenHolder.address) / TokenHolder.address_power;
 }
 
-function hasAtLeastOneDayPassed(TokenHolder) {
+function hasLessThanOneDayPassed(TokenHolder) {
  return  (Math.floor(((TokenHolder.last_payment.getTime() - Date.now()) / 1000 / 60 / 60) / 24) < 1);
 }
 
