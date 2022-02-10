@@ -1,14 +1,14 @@
 //INFO STORED ON POOL
 let rewards = 100; //Number of USDT to split
 let days = 2; // How long will the contract be active
-let tokens_locked = new Map(); // Map of address => number of tokens * purchase power
-let total_power_locked = 0; // number of total locked tokens * their purchase power
+let tokens_locked = new Map(); // Map of address => number of tokens * address power
+let total_power_locked = 0; // number of total locked tokens * their address power
 let testDate = new Date(Date.now() + 60*60*24*1000); //some test date to check if getRewards works properly
 
 //SOME ERC INFO JUST TO SIMULATE
 class TokenHolder {
   tokens_balance; //balance of tokens stored here
-  address_power; // multiplier which indicates how much more will a certain address get
+  address_power; // multiplier which indicates how much more rewards will a certain address get
   address;
   last_payment;
   rewards;
