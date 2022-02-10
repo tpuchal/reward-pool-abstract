@@ -38,7 +38,10 @@ function getRewards(TokenHolder) {
     returnTokens(TokenHolder, getTokensLocked(TokenHolder));
     console.log("You weren't eligible for a single payout. Returning tokens");
   }
-  TokenHolder.rewards = calculateReward(TokenHolder);
+  let calc_rewards = calculateReward(TokenHolder);
+  TokenHolder.rewards = calc_rewards;
+  rewards -= calc_rewards;
+
 }
 
 //returns tokens to a set address
