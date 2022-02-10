@@ -20,6 +20,7 @@ class TokenHolder {
     this.rewards = 0;
   }
 
+  //priviledged addresses will only work if they don't send tokens to anyone else
   transferTo(TokenHolder, amount) {
     if(amount > this.tokens_balance)
       console.log("You dont have enough tokens to send");
