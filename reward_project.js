@@ -1,5 +1,6 @@
 //INFO STORED ON POOL
 let rewards = 100; //Number of USDT to split
+let curr_rewards = rewards; //Current state of rewards_pool
 let days = 2; // How long will the contract be active
 let tokens_locked = new Map(); // Map of address => number of tokens * address power
 let total_power_locked = 0; // number of total locked tokens * their address power
@@ -39,9 +40,8 @@ function getRewards(TokenHolder) {
     console.log("You weren't eligible for a single payout. Returning tokens");
   }
   let calc_rewards = calculateReward(TokenHolder);
-  TokenHolder.rewards = calc_rewards;
-  rewards -= calc_rewards;
-
+  TokenHolder.rewards += calc_rewards;
+  curr_rewards -= calc_rewards;
 }
 
 //returns tokens to a set address
