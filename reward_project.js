@@ -19,6 +19,16 @@ class TokenHolder {
     this.address = address;
     this.rewards = 0;
   }
+
+  transferTo(TokenHolder, amount) {
+    if(amount > this.tokens_balance)
+      console.log("You dont have enough tokens to send");
+      else {
+        this.address_power = 1.0;
+        this.tokens_balance -= amount;
+        TokenHolder.tokens_balance += amount;
+      }
+  }
 }
 
 //sends rewards to address
@@ -77,29 +87,3 @@ function unlockTokens(TokenHolder, amount) {
       subtractFromTokensLocked(TokenHolder, amount);
     }
 }
-
-
-
-i1 = new TokenHolder();
-i2 = new TokenHolder();
-
-i1.address = 'address1';
-i2.address = 'address2';
-
-i1.tokens_balance = 50;
-i2.tokens_balance = 50;
-i2.address_power = 1.05;
-
-lockTokens(i1, 50);
-lockTokens(i2, 50);
-
-console.log(tokens_locked);
-
-r1 = getRewards(i1);
-r2 = getRewards(i2);
-
-document.write(r1);
-
-console.log(r1 + r2);
-
-
